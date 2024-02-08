@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:19:08 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/08 14:52:27 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/08 15:03:18 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (arr);
 }
 
-//******* i had to change it because was going slow. known it thanks to francinette ********
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
+	int		i;
+	int		x;
 
-	int i, x;
 	i = 0;
 	x = 0;
 	dest = (char *)malloc(((int)ft_strlen(s1) + (int)ft_strlen(s2)) + 1);

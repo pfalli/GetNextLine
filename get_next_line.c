@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:13:18 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/08 14:53:43 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/08 15:04:22 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buffer;
 
-	// checking the fd and memory allocation
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
@@ -35,13 +34,11 @@ char	*get_next_line(int fd)
 	}
 	if (buffer == NULL)
 		return (NULL);
-	// fill_line_buffer until \n or \0
 	line = fill_line_buffer(fd, left_c, buffer);
 	free(buffer);
 	buffer = NULL;
 	if (line == NULL)
 		return (NULL);
-	//  return the line, storing the return value into the static variable
 	left_c = set_line(line);
 	return (line);
 }
@@ -61,28 +58,27 @@ char	*fill_line_buffer(int fd, char *left_c, char *buffer)
 			return (0);
 		}
 		if (c_read == 0)
-		{
 			break ;
-		}
-		buffer[c_read] = 0; // now buffer stores the line and i have to store it in another string => left_c to return it in the original getnextline
+		buffer[c_read] = 0;
 		if (!left_c)
-			left_c = ft_strdup(""); // empty string
+			left_c = ft_strdup("");
 		temp = left_c;
-		left_c = ft_strjoin(temp, buffer); // now it's stored in left_c
+		left_c = ft_strjoin(temp, buffer);
 		free(temp);
-		temp = NULL; // ********************elete  or not check on francinette
-		if (ft_strchr(buffer, '\n')) // if it finds a new line it breaks the loop
+		temp = NULL;
+		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
 	return (left_c);
 }
 
 // it returns the substring of chars left
-char	*set_line(char *line) 
+char	*set_line(char *line)
 {
-	int i = 0;
-	char *left_c;
+	int		i;
+	char	*left_c;
 
+	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
 	{
 		i++;
@@ -99,7 +95,7 @@ char	*set_line(char *line)
 	return (left_c);
 }
 
-//---------------------------------------------------------------------------------
+//---------------------------------------------------
 
 //	int	main(void)
 //	{
