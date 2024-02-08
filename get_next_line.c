@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:13:18 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/07 17:10:39 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/08 14:43:27 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*fill_line_buffer(int fd, char *left_c, char *buffer)
 		left_c = ft_strjoin(temp, buffer); // now it's stored in left_c
 		free(temp);
 		temp = NULL; // ********************elete  or not check on francinette
-		if (ft_strchr(buffer, 'n')) // if it finds a new line it breaks the loop
+		if (ft_strchr(buffer, '\n')) // if it finds a new line it breaks the loop
 			break ;
 	}
 	return (left_c);
@@ -189,23 +189,21 @@ char	*set_line(char *line) // it returns the substring of chars left
 //	// join 2 string inside a new string
 //	char	*ft_strjoin(char const *s1, char const *s2)
 //	{
-//		size_t	total_len;
 //		char	*dest;
-//		int		i;
-//		int		x;
-//	
-//		total_len = (int)ft_strlen(s1) + (int)ft_strlen(s2);
+//		int		i, x;
+//		
+//		
 //		i = 0;
 //		x = 0;
-//		dest = malloc(total_len + 1);
+//		dest = malloc(((int)ft_strlen(s1) + (int)ft_strlen(s2)) + 1);
 //		if (dest == 0)
 //			return (0);
-//		while (i < (int)ft_strlen(s1))
+//		while (s1[i])
 //		{
 //			dest[i] = s1[i];
 //			i++;
 //		}
-//		while (x < (int)ft_strlen(s2))
+//		while (s2[x])
 //		{
 //			dest[i] = s2[x];
 //			x++;

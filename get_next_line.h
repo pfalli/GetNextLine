@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:58:01 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/07 15:55:47 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/08 13:10:09 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char *get_next_line(int fd);
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(char *s1);
-int	ft_strlen(const char *str);
+int		ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 
