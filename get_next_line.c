@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:13:18 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/08 14:43:27 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/08 14:53:43 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-        free(left_c);
+		free(left_c);
 		free(buffer);
-        left_c = NULL;
+		left_c = NULL;
 		buffer = NULL;
 		return (0);
 	}
@@ -77,7 +77,8 @@ char	*fill_line_buffer(int fd, char *left_c, char *buffer)
 	return (left_c);
 }
 
-char	*set_line(char *line) // it returns the substring of chars left
+// it returns the substring of chars left
+char	*set_line(char *line) 
 {
 	int i = 0;
 	char *left_c;
@@ -89,11 +90,11 @@ char	*set_line(char *line) // it returns the substring of chars left
 	if (line[i] == 0)
 		return (0);
 	left_c = ft_substr(line, i + 1, ft_strlen(line) - i);
-    if (*left_c == 0)
-    {
-        free(left_c);
-        left_c = NULL;
-    }
+	if (*left_c == 0)
+	{
+		free(left_c);
+		left_c = NULL;
+	}
 	line[i + 1] = 0;
 	return (left_c);
 }
@@ -105,16 +106,16 @@ char	*set_line(char *line) // it returns the substring of chars left
 //		int fd;
 //		char *str;
 //		fd = open("line.txt", O_RDONLY);
-//	
+//
 //		while ((str = get_next_line(fd)))
 //		{
 //			printf("%s", str);
 //			free(str);
 //		}
-//		
+//
 //		close(fd);
 //	}
-//	
+//
 //	char	*ft_strchr(const char *s, int c)
 //	{
 //		while (*s != '\0')
@@ -127,13 +128,13 @@ char	*set_line(char *line) // it returns the substring of chars left
 //			return ((char *)s);
 //		return (NULL);
 //	}
-//	
+//
 //	// new strign in a new allocated string
 //	char	*ft_strdup(char *s1)
 //	{
 //		char			*dest;
 //		unsigned int	i;
-//	
+//
 //		dest = (char *) malloc(ft_strlen(s1) + 1);
 //		if (!dest)
 //			return (NULL);
@@ -146,11 +147,11 @@ char	*set_line(char *line) // it returns the substring of chars left
 //		dest[i] = 0;
 //		return (dest);
 //	}
-//	
+//
 //	int	ft_strlen(const char *str)
 //	{
 //		int	x;
-//	
+//
 //		x = 0;
 //		while (str[x] != '\0')
 //		{
@@ -158,14 +159,14 @@ char	*set_line(char *line) // it returns the substring of chars left
 //		}
 //		return (x);
 //	}
-//	
+//
 //	// extract a substrign from another string
 //	char	*ft_substr(char const *s, unsigned int start, size_t len)
 //	{
 //		char	*arr;
 //		size_t	len_s;
 //		size_t	i;
-//	
+//
 //		if (s == NULL)
 //			return (NULL);
 //		len_s = ft_strlen(s);
@@ -185,14 +186,14 @@ char	*set_line(char *line) // it returns the substring of chars left
 //		arr[i] = 0;
 //		return (arr);
 //	}
-//	
+//
 //	// join 2 string inside a new string
 //	char	*ft_strjoin(char const *s1, char const *s2)
 //	{
 //		char	*dest;
 //		int		i, x;
-//		
-//		
+//
+//
 //		i = 0;
 //		x = 0;
 //		dest = malloc(((int)ft_strlen(s1) + (int)ft_strlen(s2)) + 1);

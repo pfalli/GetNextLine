@@ -6,13 +6,14 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:19:08 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/08 14:39:25 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/08 14:52:27 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//locate the first occurence c in the string, in this case a check for '\n' inside the buffer!!!!
+//	locate the first occurence c in the string,
+//	in this case a check for '\n' inside the buffer!!!!
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0')
@@ -88,9 +89,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*dest;
-	int		i, x;
-	
-	
+
+	int i, x;
 	i = 0;
 	x = 0;
 	dest = (char *)malloc(((int)ft_strlen(s1) + (int)ft_strlen(s2)) + 1);
@@ -110,29 +110,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	dest[i] = 0;
 	return (dest);
 }
-
-//	char	*ft_strjoin(char const *s1, char const *s2)
-//	{
-//	    char	*joined;
-//	    int		i, j;
-//	
-//	    if (!s1 || !s2)
-//	        return (NULL);
-//	    joined = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-//	    if (!joined)
-//	        return (NULL);
-//	    i = 0;
-//	    while (s1[i])
-//	    {
-//	        joined[i] = s1[i];
-//	        i++;
-//	    }
-//	    j = 0;
-//	    while (s2[j])
-//	    {
-//	        joined[i + j] = s2[j];
-//	        j++;
-//	    }
-//	    joined[i + j] = '\0';
-//	    return (joined);
-//	}
