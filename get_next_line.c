@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:13:18 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/08 15:04:22 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/09 16:06:03 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buffer;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (buffer == NULL)
+	buffer = (char *)malloc(BUFFER_SIZE + 1); // macro
+	if (buffer == NULL) // fails
 		return (NULL);
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0) // good practice vs mem leaks, crash, errors
 	{
 		free(left_c);
 		free(buffer);
@@ -32,8 +32,8 @@ char	*get_next_line(int fd)
 		buffer = NULL;
 		return (0);
 	}
-	if (buffer == NULL)
-		return (NULL);
+	//	if (buffer == NULL)
+	//		return (NULL);
 	line = fill_line_buffer(fd, left_c, buffer);
 	free(buffer);
 	buffer = NULL;
@@ -51,17 +51,17 @@ char	*fill_line_buffer(int fd, char *left_c, char *buffer)
 	c_read = 1;
 	while (c_read > 0)
 	{
-		c_read = read(fd, buffer, BUFFER_SIZE);
-		if (c_read == -1)
+		c_read = read(fd, buffer, BUFFER_SIZE); // number of bytes
+		if (c_read == -1) // error
 		{
 			free(left_c);
 			return (0);
 		}
-		if (c_read == 0)
+		if (c_read == 0) // end of file
 			break ;
 		buffer[c_read] = 0;
 		if (!left_c)
-			left_c = ft_strdup("");
+			left_c = ft_strdup(""); // allocate memory for empty string
 		temp = left_c;
 		left_c = ft_strjoin(temp, buffer);
 		free(temp);
@@ -80,10 +80,8 @@ char	*set_line(char *line)
 
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
-	{
 		i++;
-	}
-	if (line[i] == 0)
+	if (line[i] == 0) // if doesnt find a \n
 		return (0);
 	left_c = ft_substr(line, i + 1, ft_strlen(line) - i);
 	if (*left_c == 0)
